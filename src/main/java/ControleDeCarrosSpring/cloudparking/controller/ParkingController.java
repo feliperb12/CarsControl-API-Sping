@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/parking")
+
 public class ParkingController {
 
     private final ParkingMapper parkingMapper;
