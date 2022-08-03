@@ -1,6 +1,8 @@
 package ControleDeCarrosSpring.cloudparking.service;
 
+import ControleDeCarrosSpring.cloudparking.exepction.ParkingNotFoundExecption;
 import ControleDeCarrosSpring.cloudparking.model.Parking;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -8,7 +10,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class ParkingService {
+public class ParkingService extends RuntimeException {
 
     private static Map<String, Parking> parkingMap = new HashMap();
 
@@ -31,7 +33,11 @@ public class ParkingService {
     }
 
     public Parking findById(String id) {
-        return parkingMap.get(id);
+        Parking parking = parkingMap.get(id);
+        if(parking == null){
+           throw new ParkingNotFoundExecption(id);
+        }
+        return parking;
     }
 
     public Parking create(Parking parkingCreate) {
