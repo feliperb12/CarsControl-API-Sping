@@ -1,6 +1,7 @@
 package px.carsControl.parking.config;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -27,12 +28,14 @@ public class SwaggerConfig {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("px.carsControl.parking"))
                 .build()
-                .apiInfo(metaData());
-                //.securityContexts(Arrays.asList(getSecurityContext()))
-                //.securitySchemes(Arrays.asList(basicAuthScheme()));
+                .apiInfo(metaData())
+                .securityContexts(Arrays.asList(getSecurityContext()))
+                .securitySchemes(Arrays.asList(basicAuthScheme()));
 
     }
-/*
+
+
+
     private SecurityScheme basicAuthScheme() {
         return new BasicAuth("basicAuth");
     }
@@ -46,7 +49,7 @@ public class SwaggerConfig {
     private SecurityReference basicAuthReference() {
         return new SecurityReference("basicAuth", new AuthorizationScope[0]);
     }
-*/
+
     private ApiInfo metaData() {
         return new ApiInfoBuilder()
                 .title("Parking REST API")
