@@ -1,40 +1,23 @@
-package ControleDeCarrosSpring.cloudparking.model;
+package px.carsControl.parking.controller.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
-public class Parking {
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
-    @Id
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ParkingDTO {
+
     private String id;
     private String license;
     private String state;
     private String model;
     private String color;
-
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime entryDate;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime exitDate;
     private Double bill;
-
-
-
-    public Parking() {
-    }
-
-    public Parking(String id, String license, String state, String model, String color) {
-        this.id = id;
-        this.license = license;
-        this.state = state;
-        this.model = model;
-        this.color = color;
-    }
-
-
 
     public String getId() {
         return id;
@@ -99,5 +82,4 @@ public class Parking {
     public void setBill(Double bill) {
         this.bill = bill;
     }
-
 }

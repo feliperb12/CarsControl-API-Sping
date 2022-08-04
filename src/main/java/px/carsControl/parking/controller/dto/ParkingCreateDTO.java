@@ -1,6 +1,7 @@
-package ControleDeCarrosSpring.cloudparking.controller.dto;
+package px.carsControl.parking.controller.dto;
 
 public class ParkingCreateDTO {
+
     private String license;
     private String state;
     private String model;
